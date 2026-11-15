@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thank You For Your Order! — Lana Wrist BP Monitor</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #185e67;
+      --primary-dark: #0f4047;
+      --accent: #22c55e;
+      --accent-dark: #16a34a;
+      --bg: #f3f8f5;
+      --card-bg: #ffffff;
+      --text: #243638;
+      --text-muted: #64748b;
+      --border: #e2e8f0;
+      --warning: #f59e0b;
+      --warning-bg: #fffbeb;
+      --warning-border: #fef3c7;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      padding: 30px 16px;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 680px;
+      background: var(--card-bg);
+      border-radius: 20px;
+      padding: 40px 32px;
+      box-shadow: 0 15px 35px rgba(24, 94, 103, 0.08), 0 5px 15px rgba(0, 0, 0, 0.04);
+      border: 1px solid rgba(24, 94, 103, 0.1);
+      text-align: center;
+    }
+
+    /* Success Icon Animation */
+    .icon-wrapper {
+      width: 88px;
+      height: 88px;
+      background: #e6f9ed;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+      animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .icon-wrapper svg {
+      width: 48px;
+      height: 48px;
+      fill: none;
+      stroke: var(--accent);
+      stroke-width: 3;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    @keyframes popIn {
+      0% { transform: scale(0.5); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    .badge {
+      display: inline-block;
+      background: #dcfce7;
+      color: #15803d;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 6px 14px;
+      border-radius: 50px;
+      margin-bottom: 12px;
+    }
+
+    h1 {
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--primary);
+      margin-bottom: 8px;
+      line-height: 1.25;
+    }
+
+    .subtitle {
+      font-size: 15px;
+      color: var(--text-muted);
+      margin-bottom: 28px;
+    }
+
+    /* Order Details Card */
+    .details-card {
+      background: #fafdfb;
+      border: 1px solid #d5ece1;
+      border-radius: 14px;
+      padding: 22px;
+      text-align: left;
+      margin-bottom: 24px;
+    }
+
+    .details-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #e2efe8;
+      padding-bottom: 12px;
+      margin-bottom: 16px;
+    }
+
+    .details-header h3 {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    .order-id {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-muted);
+      background: #eef7f3;
+      padding: 4px 10px;
+      border-radius: 6px;
+    }
+
+    .detail-row {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 10px;
+      font-size: 14px;
+    }
+
+    .detail-row:last-child {
+      margin-bottom: 0;
+    }
+
+    .detail-label {
+      color: var(--text-muted);
+      font-weight: 500;
+      flex: 1;
+    }
+
+    .detail-value {
+      font-weight: 600;
+      color: var(--text);
+      text-align: right;
+      flex: 1.5;
+      word-break: break-word;
+    }
+
+    .highlight-value {
+      color: var(--primary);
+      font-weight: 700;
+    }
+
+    /* Notice Card */
+    .notice-card {
+      background: var(--warning-bg);
+      border: 1px solid #fde68a;
+      border-radius: 14px;
+      padding: 18px 20px;
+      text-align: left;
+      margin-bottom: 24px;
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+    }
+
+    .notice-card svg {
+      width: 24px;
+      height: 24px;
+      flex-shrink: 0;
+      stroke: var(--warning);
+      stroke-width: 2;
+      fill: none;
+      margin-top: 2px;
+    }
+
+    .notice-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: #92400e;
+      margin-bottom: 4px;
+    }
+
+    .notice-desc {
+      font-size: 13px;
+      color: #78350f;
+      line-height: 1.5;
+    }
+
+    /* Timeline */
+    .timeline {
+      text-align: left;
+      margin-bottom: 28px;
+      padding: 0 4px;
+    }
+
+    .timeline-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 14px;
+    }
+
+    .timeline-step {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      margin-bottom: 14px;
+      position: relative;
+    }
+
+    .timeline-step:last-child {
+      margin-bottom: 0;
+    }
+
+    .step-num {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--primary);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .step-content h4 {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .step-content p {
+      font-size: 12.5px;
+      color: var(--text-muted);
+    }
+
+    /* Action Buttons */
+    .btn-group {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 14px 24px;
+      border-radius: 10px;
+      font-size: 15px;
+      font-weight: 700;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      border: none;
+    }
+
+    .btn-whatsapp {
+      background: #25D366;
+      color: #ffffff;
+      box-shadow: 0 4px 14px rgba(37, 211, 102, 0.35);
+    }
+
+    .btn-whatsapp:hover {
+      background: #20bd5a;
+      transform: translateY(-1px);
+    }
+
+    .btn-secondary {
+      background: #eef5f3;
+      color: var(--primary);
+    }
+
+    .btn-secondary:hover {
+      background: #dfeee9;
+    }
+
+    @media (max-width: 480px) {
+      .container {
+        padding: 30px 20px;
+      }
+      h1 {
+        font-size: 22px;
+      }
+      .detail-row {
+        flex-direction: column;
+        gap: 2px;
+      }
+      .detail-value {
+        text-align: left;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <!-- Success Badge & Icon -->
+    <div class="icon-wrapper">
+      <svg viewBox="0 0 24 24">
+        <path d="M20 6L9 17l-5-5"></path>
+      </svg>
+    </div>
+
+    <span class="badge">Order Confirmed</span>
+    <h1>Thank You For Your Order!</h1>
+    <p class="subtitle">Your order has been received and is now being processed for dispatch.</p>
+
+    <!-- Details Card -->
+    <div class="details-card">
+      <div class="details-header">
+        <h3>Order Summary</h3>
+        <span class="order-id" id="display-order-id">#BP-83921</span>
+      </div>
+
+      <div class="detail-row">
+        <span class="detail-label">Customer Name:</span>
+        <span class="detail-value" id="display-name">Customer</span>
+      </div>
+      <div class="detail-row">
+        <span class="detail-label">Phone Number:</span>
+        <span class="detail-value" id="display-phone">-</span>
+      </div>
+      <div class="detail-row" id="row-phone2" style="display:none;">
+        <span class="detail-label">Alt / WhatsApp Phone:</span>
+        <span class="detail-value" id="display-phone2">-</span>
+      </div>
+      <div class="detail-row">
+        <span class="detail-label">Package Ordered:</span>
+        <span class="detail-value highlight-value" id="display-package">Wrist BP Monitor</span>
+      </div>
+      <div class="detail-row">
+        <span class="detail-label">Delivery Destination:</span>
+        <span class="detail-value" id="display-address">-</span>
+      </div>
+      <div class="detail-row">
+        <span class="detail-label">Payment Method:</span>
+        <span class="detail-value">Payment on Delivery (Cash / Transfer)</span>
+      </div>
+    </div>
+
+    <!-- Important Verification Notice -->
+    <div class="notice-card">
+      <svg viewBox="0 0 24 24">
+        <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
+        <line x1="12" y1="9" x2="12" y2="13"></line>
+        <line x1="12" y1="17" x2="12.01" y2="17"></line>
+      </svg>
+      <div>
+        <div class="notice-title">IMPORTANT: Keep Your Phone Active</div>
+        <div class="notice-desc">
+          Our dispatch rider / customer agent will call you within a few hours to confirm your delivery address before shipping. Please ensure your phone is switched on and reachable.
+        </div>
+      </div>
+    </div>
+
+    <!-- Timeline Steps -->
+    <div class="timeline">
+      <div class="timeline-title">What Happens Next?</div>
+      <div class="timeline-step">
+        <div class="step-num">1</div>
+        <div class="step-content">
+          <h4>Phone Verification</h4>
+          <p>You will receive a brief confirmation call or SMS from our logistics team.</p>
+        </div>
+      </div>
+      <div class="timeline-step">
+        <div class="step-num">2</div>
+        <div class="step-content">
+          <h4>Fast Nationwide Dispatch</h4>
+          <p>Your package is securely packaged with full clinical accessories and dispatched.</p>
+        </div>
+      </div>
+      <div class="timeline-step">
+        <div class="step-num">3</div>
+        <div class="step-content">
+          <h4>Doorstep Delivery & Payment</h4>
+          <p>Inspect your Wrist BP Monitor upon arrival and pay the delivery rider directly.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Action Buttons -->
+    <div class="btn-group">
+      <a id="whatsapp-btn" href="https://wa.me/?text=Hello%20Lana%20Store%2C%20I%20just%20placed%20an%20order%20for%20the%20Wrist%20BP%20Monitor" target="_blank" class="btn btn-whatsapp">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.007c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86.174.086.275.072.376-.044.101-.116.433-.506.549-.68.116-.173.231-.145.39-.086s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.099.824z"/>
+        </svg>
+        Need Help? Chat With Us on WhatsApp
+      </a>
+      <a href="index.html" class="btn btn-secondary">
+        Return to Home Page
+      </a>
+    </div>
+
+  </div>
+
+  <script>
+    (function() {
+      // 1. Generate or retrieve Order ID
+      var randomId = '#BP-' + Math.floor(10000 + Math.random() * 90000);
+      var orderIdEl = document.getElementById('display-order-id');
+      if (orderIdEl) orderIdEl.textContent = randomId;
+
+      // 2. Parse URL parameters or fallback to localStorage
+      var params = new URLSearchParams(window.location.search);
+      var name = params.get('name') || localStorage.getItem('bp_order_name') || 'Valued Customer';
+      var phone = params.get('phone') || localStorage.getItem('bp_order_phone') || 'Not provided';
+      var phone2 = params.get('phone2') || localStorage.getItem('bp_order_phone2');
+      var pkg = params.get('package') || localStorage.getItem('bp_order_package') || 'Wrist BP Monitor (1 Pack)';
+      var address = params.get('address') || localStorage.getItem('bp_order_address') || '';
+      var state = params.get('state') || localStorage.getItem('bp_order_state') || '';
+
+      var fullAddress = address ? (state ? address + ', ' + state : address) : (state || 'Nigeria');
+
+      // 3. Populate fields
+      document.getElementById('display-name').textContent = name;
+      document.getElementById('display-phone').textContent = phone;
+      document.getElementById('display-package').textContent = pkg;
+      document.getElementById('display-address').textContent = fullAddress;
+
+      if (phone2) {
+        document.getElementById('row-phone2').style.display = 'flex';
+        document.getElementById('display-phone2').textContent = phone2;
+      }
+
+      // 4. Customize WhatsApp link with order details
+      var waMsg = encodeURIComponent("Hello Lana Store, I just placed an order (" + randomId + ") for " + pkg + ". My name is " + name + " (" + phone + "). Please confirm!");
+      var waBtn = document.getElementById('whatsapp-btn');
+      if (waBtn) {
+        waBtn.href = "https://wa.me/?text=" + waMsg;
+      }
+    })();
+  </script>
+</body>
+</html>
